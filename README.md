@@ -11,7 +11,7 @@
  * Gifs showing how the code works on the console.
  * Fully responsible website.
 
- <p align="center"><img src="Midia/gif.gif" width="800"></p>
+ <p align="center"><img src="Midia/gif.gif" width="600"></p>
 
  ## Getting Started
 
