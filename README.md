@@ -9,12 +9,14 @@
  * All complete back-end codes available on the website.
  * Explanation of the usefulness of each code.
  * Gifs showing how the code works on the console.
- * Fully responsible website
+ * Fully responsible website.
+
+ <p align="center"><img src="Midia/gif.gif" width="1200"></p>
 
  ## Getting Started
 
  1. Clone this repo using git clone `https://github.com/asmmichel/meu-site`
- 2. Move yourself to the appropriate directory: `cd meu-site`
+ 2. Move yourself to the appropriate directory `cd meu-site`
  3. Run `index.html`
  
  ## License
