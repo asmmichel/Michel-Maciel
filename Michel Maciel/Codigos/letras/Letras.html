@@ -1,0 +1,64 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>Letras.java</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<style type="text/css">
+<!--
+::-webkit-scrollbar {width: 5px; height: 5px;}
+::-webkit-scrollbar-track {box-shadow: inset 0 0 5px grey; border-radius: 5px;}
+::-webkit-scrollbar-thumb {background: #012E55; border-radius: 10px;}
+::-webkit-scrollbar-thumb:hover {background: #BFE9F4;}
+body {color: #a9b7c6; background-color: #030D19; font-family: Monospaced}
+pre {color: #a9b7c6; background-color: #030D19; font-family: Monospaced}
+table {color: #888888; background-color: #030D19; font-family: Monospaced}
+a {text-decoration: none;}
+.whitespace {color: #505050}
+.ST0 {color: #ffc66d; font-family: Monospaced; font-style: italic}
+.ST1 {color: #9876aa; font-family: Monospaced; font-style: italic}
+.string {color: #6a8759}
+.number {color: #6897bb}
+.ST3 {color: #9876aa}
+.ST2 {font-family: Monospaced; font-style: italic}
+.literal {color: #cc7832}
+-->
+</style>
+</head>
+<body>
+<a href="/Codigos/letras/Letras.html" target="_blank">
+<table width="100%"><tr><td align="center">C:\Users\miche\Documents\NetBeansProjects\letras\src\letras\Letras.java</td></tr></table>
+<pre>
+<span class="literal">package</span> letras;
+
+<span class="literal">import</span> java.util.*;
+
+<span class="literal">public</span> <span class="literal">class</span> Letras {
+
+    <span class="literal">static</span> <span class="literal">int</span> <span class="ST0">calcTamanho</span>(String frase) {
+
+        <span class="literal">if</span> (frase.isEmpty()) {
+            <span class="literal">return</span> <span class="number">0</span>;
+        } <span class="literal">else</span> {
+            frase = frase.substring(<span class="number">1</span>);
+            <span class="literal">return</span> <span class="number">1</span> + <span class="ST1">calcTamanho</span>(frase);
+        }
+    }
+
+    <span class="literal">public</span> <span class="literal">static</span> <span class="literal">void</span> <span class="ST0">main</span>(String[] args) {
+        Scanner ent = <span class="literal">new</span> Scanner(System.<span class="ST2">in</span>);
+
+        String frase;
+        <span class="literal">int</span> qLetras;
+
+        System.<span class="ST2">out</span>.print(<span class="string">&quot;</span><span class="string">Frase = </span><span class="string">&quot;</span>);
+        frase = ent.nextLine();
+
+        qLetras = <span class="ST1">calcTamanho</span>(frase);
+
+        System.<span class="ST2">out</span>.println(<span class="string">&quot;</span><span class="string">A frase tem </span><span class="string">&quot;</span> + qLetras + <span class="string">&quot;</span><span class="string"> letras</span><span class="string">&quot;</span>);
+    }
+
+}
+
+</pre></a></body>
+</html>

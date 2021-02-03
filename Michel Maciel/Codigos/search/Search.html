@@ -1,0 +1,75 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>Search.java</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<style type="text/css">
+<!--
+::-webkit-scrollbar {width: 5px; height: 5px;}
+::-webkit-scrollbar-track {box-shadow: inset 0 0 5px grey; border-radius: 5px;}
+::-webkit-scrollbar-thumb {background: #012E55; border-radius: 10px;}
+::-webkit-scrollbar-thumb:hover {background: #BFE9F4;}
+body {color: #a9b7c6; background-color: #030D19; font-family: Monospaced}
+pre {color: #a9b7c6; background-color: #030D19; font-family: Monospaced}
+table {color: #888888; background-color: #030D19; font-family: Monospaced}
+a {text-decoration: none;}
+.whitespace {color: #505050}
+.ST0 {color: #ffc66d; font-family: Monospaced; font-style: italic}
+.ST1 {color: #9876aa; font-family: Monospaced; font-style: italic}
+.string {color: #6a8759}
+.number {color: #6897bb}
+.ST3 {color: #9876aa}
+.ST2 {font-family: Monospaced; font-style: italic}
+.literal {color: #cc7832}
+-->
+</style>
+</head>
+<body>
+<a href=/Codigos/search/Search.html" target="_blank">
+<table width="100%"><tr><td align="center">C:\Users\miche\Documents\NetBeansProjects\search\src\search\Search.java</td></tr></table>
+<pre>
+<span class="literal">package</span> search;
+
+<span class="literal">import</span> java.util.Scanner;
+
+<span class="literal">public</span> <span class="literal">class</span> Search {
+
+    <span class="literal">public</span> <span class="literal">static</span> <span class="literal">void</span> <span class="ST0">main</span>(String[] args) {
+        Scanner ent = <span class="literal">new</span> Scanner(System.<span class="ST1">in</span>);
+        
+        <span class="literal">int</span> num;
+        <span class="literal">int</span> inicio=<span class="number">0</span>;
+        <span class="literal">int</span> fim=<span class="number">999999</span>;
+        <span class="literal">int</span> meio=(inicio+fim)/<span class="number">2</span>;
+        <span class="literal">int</span>[] vetor = <span class="literal">new</span> <span class="literal">int</span>[<span class="number">1000000</span>];
+        <span class="literal">boolean</span> achou=<span class="literal">false</span>;
+        
+        System.<span class="ST1">out</span>.print(<span class="string">&quot;</span><span class="string">Velocidade da Pesquisa 1:1000000 - </span><span class="string">&quot;</span>);
+        num = ent.nextInt();
+        
+        <span class="literal">for</span> (<span class="literal">int</span> i = <span class="number">0</span>; i &lt; <span class="number">1000000</span>; i++) {
+            vetor[i] = i;
+        }
+        
+        <span class="literal">while</span> (inicio &lt;= fim &amp;&amp; !achou) {
+            <span class="literal">if</span> (vetor[meio]==num) {
+                achou=<span class="literal">true</span>;
+            } <span class="literal">else</span> {
+                <span class="literal">if</span> (num&lt;vetor[meio]) {
+                    fim=meio-<span class="number">1</span>;
+                } <span class="literal">else</span> {
+                    inicio=meio+<span class="number">1</span>;
+                }
+                meio=(inicio+fim)/<span class="number">2</span>;
+            }
+        }
+        <span class="literal">if</span> (!achou) {
+            System.<span class="ST1">out</span>.println(<span class="string">&quot;</span><span class="string">Não Encontrado</span><span class="string">&quot;</span>);
+        } <span class="literal">else</span> {
+            System.<span class="ST1">out</span>.println(<span class="string">&quot;</span><span class="string">Encontrado na posição </span><span class="string">&quot;</span>+(meio+<span class="number">1</span>)+<span class="string">&quot;</span><span class="string"> do vetor</span><span class="string">&quot;</span>);
+        }
+    }
+
+}
+</pre></a></body>
+</html>

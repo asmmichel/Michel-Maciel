@@ -1,0 +1,147 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>Auditorio.java</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<style type="text/css">
+<!--
+::-webkit-scrollbar {width: 5px; height: 5px;}
+::-webkit-scrollbar-track {box-shadow: inset 0 0 5px grey; border-radius: 5px;}
+::-webkit-scrollbar-thumb {background: #012E55; border-radius: 10px;}
+::-webkit-scrollbar-thumb:hover {background: #BFE9F4;}
+body {color: #a9b7c6; background-color: #030D19; font-family: Monospaced}
+pre {color: #a9b7c6; background-color: #030D19; font-family: Monospaced}
+table {color: #888888; background-color: #030D19; font-family: Monospaced}
+a {text-decoration: none;}
+.whitespace {color: #505050}
+.ST0 {color: #ffc66d; font-family: Monospaced; font-style: italic}
+.ST1 {color: #9876aa; font-family: Monospaced; font-style: italic}
+.string {color: #6a8759}
+.number {color: #6897bb}
+.ST3 {color: #9876aa}
+.ST2 {font-family: Monospaced; font-style: italic}
+.literal {color: #cc7832}
+-->
+</style>
+</head>
+<body>
+<a href="/Codigos/auditorio/Auditorio.html" target="_blank"></a>
+<table width="100%"><tr><td align="center">C:\Users\miche\Documents\NetBeansProjects\auditorio\src\auditorio\Auditorio.java</td></tr></table>
+<pre>
+<span class="literal">package</span> auditorio;
+
+<span class="literal">import</span> java.awt.AWTException;
+<span class="literal">import</span> java.awt.Robot;
+<span class="literal">import</span> java.awt.event.KeyEvent;
+<span class="literal">import</span> java.util.*;
+
+<span class="literal">public</span> <span class="literal">class</span> Auditorio {
+
+    <span class="literal">public</span> <span class="literal">static</span> <span class="literal">void</span> <span class="ST0">main</span>(String[] args) {
+        Scanner ent = <span class="literal">new</span> Scanner(System.<span class="ST1">in</span>);
+        Dados minhaHashtable = <span class="literal">new</span> Dados();
+        Evento meuEvento;
+        <span class="literal">int</span> resp;
+
+        <span class="literal">do</span> {
+            System.<span class="ST1">out</span>.println(<span class="string">&quot;</span><span class="string">Agendamento de Auditório em Eventos</span><span class="string">&quot;</span>);
+            System.<span class="ST1">out</span>.println(<span class="string">&quot;</span><span class="string">___________________________________</span><span class="string">&quot;</span>);
+            System.<span class="ST1">out</span>.println(<span class="string">&quot;</span><span class="string">1 - Inserir Evento no Auditório</span><span class="string">&quot;</span>);
+            System.<span class="ST1">out</span>.println(<span class="string">&quot;</span><span class="string">2 - Listar todos os Eventos Inseridos</span><span class="string">&quot;</span>);
+            System.<span class="ST1">out</span>.println(<span class="string">&quot;</span><span class="string">3 - Pesquisar um Evento Inserido</span><span class="string">&quot;</span>);
+            System.<span class="ST1">out</span>.println(<span class="string">&quot;</span><span class="string">4 - Editar um Evento</span><span class="string">&quot;</span>);
+            System.<span class="ST1">out</span>.println(<span class="string">&quot;</span><span class="string">5 - Excluir um Evento Inserido</span><span class="string">&quot;</span>);
+            System.<span class="ST1">out</span>.println(<span class="string">&quot;</span><span class="string">6 - Apagar Todos os Eventos</span><span class="string">&quot;</span>);
+            System.<span class="ST1">out</span>.println(<span class="string">&quot;</span><span class="string">0 - Sair do Programa</span><span class="string">&quot;</span>);
+            System.<span class="ST1">out</span>.print(<span class="string">&quot;</span><span class="string">Escolha uma Opção: </span><span class="string">&quot;</span>);
+            resp = Integer.<span class="ST2">parseInt</span>(ent.nextLine());
+
+            <span class="literal">if</span> (resp == <span class="number">1</span>) {
+                <span class="ST2">ConsoleClear</span>();
+                meuEvento = <span class="literal">new</span> Evento();
+                meuEvento.inserirEvento();
+                minhaHashtable.gravarDados(meuEvento);
+                System.<span class="ST1">out</span>.println(<span class="string">&quot;</span><span class="string">Evento Inserido! - Número de Eventos: </span><span class="string">&quot;</span>
+                        + minhaHashtable.<span class="ST3">hashEvento</span>.size());
+                ent.nextLine();
+            }
+            <span class="literal">if</span> (resp == <span class="number">2</span>) {
+                <span class="ST2">ConsoleClear</span>();
+                <span class="literal">if</span> (minhaHashtable.<span class="ST3">hashEvento</span>.isEmpty()) {
+                    System.<span class="ST1">out</span>.println(<span class="string">&quot;</span><span class="string">Não Existem Eventos no Auditório</span><span class="string">&quot;</span>);
+                } <span class="literal">else</span> {
+                    minhaHashtable.listarEventos();
+                    System.<span class="ST1">out</span>.println(<span class="string">&quot;</span><span class="string">Número de Eventos: </span><span class="string">&quot;</span>
+                            + minhaHashtable.<span class="ST3">hashEvento</span>.size());
+                }
+                ent.nextLine();
+            }
+            <span class="literal">if</span> (resp == <span class="number">3</span>) {
+                <span class="ST2">ConsoleClear</span>();
+                <span class="literal">if</span> (minhaHashtable.<span class="ST3">hashEvento</span>.isEmpty()) {
+                    System.<span class="ST1">out</span>.println(<span class="string">&quot;</span><span class="string">Não Existem Eventos no Auditório</span><span class="string">&quot;</span>);
+                } <span class="literal">else</span> {
+                    System.<span class="ST1">out</span>.print(<span class="string">&quot;</span><span class="string">Código do Evento: </span><span class="string">&quot;</span>);
+                    String aux = ent.nextLine();
+                    minhaHashtable.pesquisarEvento(aux);
+                }
+                ent.nextLine();
+            }
+            <span class="literal">if</span> (resp == <span class="number">4</span>) {
+                <span class="ST2">ConsoleClear</span>();
+                <span class="literal">if</span> (minhaHashtable.<span class="ST3">hashEvento</span>.isEmpty()) {
+                    System.<span class="ST1">out</span>.println(<span class="string">&quot;</span><span class="string">Não Existem Eventos no Auditório</span><span class="string">&quot;</span>);
+                } <span class="literal">else</span> {
+                    System.<span class="ST1">out</span>.print(<span class="string">&quot;</span><span class="string">Código do Evento: </span><span class="string">&quot;</span>);
+                    String aux = ent.nextLine();
+                    minhaHashtable.editarEvento(aux);
+                }
+                ent.nextLine();
+            }
+            <span class="literal">if</span> (resp == <span class="number">5</span>) {
+                <span class="ST2">ConsoleClear</span>();
+                <span class="literal">if</span> (minhaHashtable.<span class="ST3">hashEvento</span>.isEmpty()) {
+                    System.<span class="ST1">out</span>.println(<span class="string">&quot;</span><span class="string">Não Existem Eventos no Auditório</span><span class="string">&quot;</span>);
+                } <span class="literal">else</span> {
+                    System.<span class="ST1">out</span>.print(<span class="string">&quot;</span><span class="string">Código do Evento: </span><span class="string">&quot;</span>);
+                    String aux = ent.nextLine();
+                    minhaHashtable.removerEvento(aux);
+                    System.<span class="ST1">out</span>.println(<span class="string">&quot;</span><span class="string">Número de Eventos: </span><span class="string">&quot;</span>
+                            + minhaHashtable.<span class="ST3">hashEvento</span>.size());
+                }
+                ent.nextLine();
+            }
+            <span class="literal">if</span> (resp == <span class="number">6</span>) {
+                <span class="ST2">ConsoleClear</span>();
+                <span class="literal">if</span> (minhaHashtable.<span class="ST3">hashEvento</span>.isEmpty()) {
+                    System.<span class="ST1">out</span>.println(<span class="string">&quot;</span><span class="string">Não Existem Eventos no Auditório</span><span class="string">&quot;</span>);
+                } <span class="literal">else</span> {
+                    minhaHashtable.<span class="ST3">hashEvento</span>.clear();
+                    System.<span class="ST1">out</span>.println(<span class="string">&quot;</span><span class="string">Todos os Eventos foram Apagados do Auditório!</span><span class="string">&quot;</span>);
+                    System.<span class="ST1">out</span>.println(<span class="string">&quot;</span><span class="string">Número de Eventos: </span><span class="string">&quot;</span>
+                            + minhaHashtable.<span class="ST3">hashEvento</span>.size());
+                }
+                ent.nextLine();
+            }
+            <span class="ST2">ConsoleClear</span>();
+        } <span class="literal">while</span> (resp != <span class="number">0</span>);
+    }
+    
+    <span class="literal">static</span> <span class="literal">void</span> <span class="ST0">ConsoleClear</span>() {
+        <span class="literal">try</span> {
+            Robot robot = <span class="literal">new</span> Robot();
+
+            robot.setAutoDelay(<span class="number">5</span>);
+            robot.keyPress(KeyEvent.<span class="ST1">VK_CONTROL</span>);
+            robot.keyPress(KeyEvent.<span class="ST1">VK_L</span>);
+
+            robot.keyRelease(KeyEvent.<span class="ST1">VK_CONTROL</span>);
+            robot.keyRelease(KeyEvent.<span class="ST1">VK_L</span>);
+
+        } <span class="literal">catch</span> (AWTException ex) {
+            System.<span class="ST1">out</span>.println(ex.getMessage());
+        }
+    }
+}
+</pre></a></body>
+</html>

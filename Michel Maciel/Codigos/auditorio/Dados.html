@@ -1,0 +1,87 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>Dados.java</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<style type="text/css">
+<!--
+::-webkit-scrollbar {width: 5px; height: 5px;}
+::-webkit-scrollbar-track {box-shadow: inset 0 0 5px grey; border-radius: 5px;}
+::-webkit-scrollbar-thumb {background: #012E55; border-radius: 10px;}
+::-webkit-scrollbar-thumb:hover {background: #BFE9F4;}
+body {color: #a9b7c6; background-color: #030D19; font-family: Monospaced}
+pre {color: #a9b7c6; background-color: #030D19; font-family: Monospaced}
+table {color: #888888; background-color: #030D19; font-family: Monospaced}
+a {text-decoration: none;}
+.whitespace {color: #505050}
+.ST2 {color: #9876aa; font-family: Monospaced; font-style: italic}
+.string {color: #6a8759}
+.ST0 {color: #9876aa}
+.ST1 {color: #ffc66d}
+.literal {color: #cc7832}
+-->
+</style>
+</head>
+<body>
+<a href="/Codigos/auditorio/Dados.html" target="_blank">
+<table width="100%"><tr><td align="center">C:\Users\miche\Documents\NetBeansProjects\auditorio\src\auditorio\Dados.java</td></tr></table>
+<pre>
+<span class="literal">package</span> auditorio;
+
+<span class="literal">import</span> java.util.*;
+
+<span class="literal">public</span> <span class="literal">class</span> Dados {
+
+    <span class="literal">public</span> Hashtable <span class="ST0">hashEvento</span>;
+
+    <span class="literal">public</span> Dados() {
+        <span class="ST0">hashEvento</span> = <span class="literal">new</span> Hashtable();
+    }
+
+    <span class="literal">public</span> <span class="literal">void</span> <span class="ST1">gravarDados</span>(Evento meuEvento) {
+        <span class="ST0">hashEvento</span>.put(meuEvento.<span class="ST0">codEvento</span>, meuEvento);
+    }
+    <span class="literal">public</span> <span class="literal">void</span> <span class="ST1">listarEventos</span>() {
+        Set&lt;String&gt; setKeys = <span class="ST0">hashEvento</span>.keySet();
+        <span class="literal">for</span> (String key : setKeys) {
+            Evento xEve = (Evento) <span class="ST0">hashEvento</span>.get(key);
+            System.<span class="ST2">out</span>.println(<span class="string">&quot;</span><span class="literal">\t</span><span class="string">&quot;</span> + key + <span class="string">&quot;</span><span class="string"> - </span><span class="string">&quot;</span> + xEve.<span class="ST0">nomeEvento</span>);
+            System.<span class="ST2">out</span>.println(<span class="string">&quot;</span><span class="literal">\t</span><span class="string">Data: </span><span class="string">&quot;</span> + xEve.<span class="ST0">dataEvento</span>
+                    + <span class="string">&quot;</span><span class="string"> / Hora: </span><span class="string">&quot;</span> + xEve.<span class="ST0">horaEvento</span>+<span class="string">&quot;</span><span class="literal">\n</span><span class="string">&quot;</span>);
+        }
+    }
+    <span class="literal">public</span> <span class="literal">void</span> <span class="ST1">pesquisarEvento</span>(String aux) {
+        <span class="literal">if</span> (<span class="ST0">hashEvento</span>.containsKey(aux)) {
+            Evento xEve = (Evento) <span class="ST0">hashEvento</span>.get(aux);
+            System.<span class="ST2">out</span>.println(<span class="string">&quot;</span><span class="string">Encontrado! - </span><span class="string">&quot;</span> + xEve.<span class="ST0">nomeEvento</span>
+                    + <span class="string">&quot;</span><span class="string"> no dia </span><span class="string">&quot;</span> + xEve.<span class="ST0">dataEvento</span> + <span class="string">&quot;</span><span class="string"> às </span><span class="string">&quot;</span> + xEve.<span class="ST0">horaEvento</span>);
+        } <span class="literal">else</span> {
+            System.<span class="ST2">out</span>.println(<span class="string">&quot;</span><span class="string">Evento Não Encontrado!</span><span class="string">&quot;</span>);
+        }
+    }
+    <span class="literal">public</span> <span class="literal">void</span> <span class="ST1">editarEvento</span>(String aux) {
+        <span class="literal">if</span> (<span class="ST0">hashEvento</span>.containsKey(aux)) {
+            Evento xEve = (Evento) <span class="ST0">hashEvento</span>.get(aux);
+            System.<span class="ST2">out</span>.println(<span class="string">&quot;</span><span class="string">Evento </span><span class="string">&quot;</span> + xEve.<span class="ST0">nomeEvento</span> + <span class="string">&quot;</span><span class="string"> no dia </span><span class="string">&quot;</span>
+                    + xEve.<span class="ST0">dataEvento</span> + <span class="string">&quot;</span><span class="string"> às </span><span class="string">&quot;</span> + xEve.<span class="ST0">horaEvento</span>);
+            System.<span class="ST2">out</span>.println(<span class="string">&quot;</span><span class="string">Digite as Alterações do Evento Abaixo</span><span class="literal">\n</span><span class="string">&quot;</span>);
+            xEve.inserirEvento();
+            System.<span class="ST2">out</span>.println(<span class="string">&quot;</span><span class="literal">\n</span><span class="string">Evento Alterado! - Novo Evento </span><span class="string">&quot;</span>+xEve.<span class="ST0">nomeEvento</span>);
+        } <span class="literal">else</span> {
+            System.<span class="ST2">out</span>.println(<span class="string">&quot;</span><span class="string">Evento Não Encontrado!</span><span class="string">&quot;</span>);
+        }
+    }
+    <span class="literal">public</span> <span class="literal">void</span> <span class="ST1">removerEvento</span>(String aux) {
+
+        <span class="literal">if</span> (<span class="ST0">hashEvento</span>.containsKey(aux)) {
+            Evento xEve = (Evento) <span class="ST0">hashEvento</span>.get(aux);
+            System.<span class="ST2">out</span>.println(<span class="string">&quot;</span><span class="string">Encontrado! Evento </span><span class="string">&quot;</span> + xEve.<span class="ST0">nomeEvento</span>
+                    +<span class="string">&quot;</span><span class="string"> será Removido</span><span class="string">&quot;</span>);
+            <span class="ST0">hashEvento</span>.remove(aux);
+        } <span class="literal">else</span> {
+            System.<span class="ST2">out</span>.println(<span class="string">&quot;</span><span class="string">Evento Não Encontrado!</span><span class="string">&quot;</span>);
+        }
+    }
+}
+</pre></a></body>
+</html>

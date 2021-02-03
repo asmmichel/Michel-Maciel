@@ -1,0 +1,158 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>Arvore.java</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<style type="text/css">
+<!--
+::-webkit-scrollbar {width: 5px; height: 5px;}
+::-webkit-scrollbar-track {box-shadow: inset 0 0 5px grey; border-radius: 5px;}
+::-webkit-scrollbar-thumb {background: #012E55; border-radius: 10px;}
+::-webkit-scrollbar-thumb:hover {background: #BFE9F4;}
+body {color: #a9b7c6; background-color: #030D19; font-family: Monospaced}
+pre {color: #a9b7c6; background-color: #030D19; font-family: Monospaced}
+table {color: #888888; background-color: #030D19; font-family: Monospaced}
+a {text-decoration: none;}
+.whitespace {color: #505050}
+.ST2 {color: #9876aa; font-family: Monospaced; font-style: italic}
+.string {color: #6a8759}
+.ST0 {color: #9876aa}
+.ST1 {color: #ffc66d}
+.literal {color: #cc7832}
+-->
+</style>
+</head>
+<body>
+<a href="/Codigos/arv/Arvore.html" target="_blank">
+<table width="100%"><tr><td align="center">C:\Users\miche\Documents\NetBeansProjects\Arv\src\arv\Arvore.java</td></tr></table>
+<pre>
+<span class="literal">package</span> arv;
+
+<span class="literal">class</span> Elemento {
+
+    <span class="literal">public</span> <span class="literal">int</span> <span class="ST0">num</span>;
+    <span class="literal">public</span> Elemento <span class="ST0">dir</span>;
+    <span class="literal">public</span> Elemento <span class="ST0">esq</span>;
+
+    <span class="literal">public</span> Elemento() {
+        <span class="ST0">num</span> = <span class="number">0</span>;
+        <span class="ST0">dir</span> = <span class="literal">null</span>;
+        <span class="ST0">esq</span> = <span class="literal">null</span>;
+    }
+}
+
+<span class="literal">public</span> <span class="literal">class</span> Arvore {
+
+    <span class="literal">public</span> Elemento <span class="ST0">novo</span>;
+    <span class="literal">public</span> Elemento <span class="ST0">raiz</span>;
+    <span class="literal">public</span> Elemento <span class="ST0">aux</span>;
+
+    <span class="literal">public</span> Arvore() {
+        <span class="ST0">novo</span> = <span class="literal">null</span>;
+        <span class="ST0">raiz</span> = <span class="literal">null</span>;
+    }
+
+    <span class="literal">public</span> <span class="literal">boolean</span> <span class="ST1">inserir</span>(<span class="literal">int</span> num) {
+
+        <span class="ST0">novo</span> = <span class="literal">new</span> Elemento();
+        <span class="ST0">novo</span>.<span class="ST0">num</span> = num;
+
+        <span class="literal">if</span> (<span class="ST0">raiz</span> == <span class="literal">null</span>) {
+            <span class="ST0">raiz</span> = <span class="ST0">novo</span>;
+        } <span class="literal">else</span> {
+            <span class="ST0">aux</span> = <span class="ST0">raiz</span>;
+            <span class="literal">int</span> achou = <span class="number">0</span>;
+            <span class="literal">while</span> (achou == <span class="number">0</span>) {
+                <span class="literal">if</span> (<span class="ST0">novo</span>.<span class="ST0">num</span> &lt; <span class="ST0">aux</span>.<span class="ST0">num</span>) {
+                    <span class="literal">if</span> (<span class="ST0">aux</span>.<span class="ST0">esq</span> == <span class="literal">null</span>) {
+                        <span class="ST0">aux</span>.<span class="ST0">esq</span> = <span class="ST0">novo</span>;
+                        achou = <span class="number">1</span>;
+                    } <span class="literal">else</span> {
+                        <span class="ST0">aux</span> = <span class="ST0">aux</span>.<span class="ST0">esq</span>;
+                    }
+                } <span class="literal">else</span> <span class="literal">if</span> (<span class="ST0">novo</span>.<span class="ST0">num</span> &gt; <span class="ST0">aux</span>.<span class="ST0">num</span>) {
+                    <span class="literal">if</span> (<span class="ST0">aux</span>.<span class="ST0">dir</span> == <span class="literal">null</span>) {
+                        <span class="ST0">aux</span>.<span class="ST0">dir</span> = <span class="ST0">novo</span>;
+                        achou = <span class="number">1</span>;
+                    } <span class="literal">else</span> {
+                        <span class="ST0">aux</span> = <span class="ST0">aux</span>.<span class="ST0">dir</span>;
+                    }
+                } <span class="literal">else</span> <span class="literal">if</span> (<span class="ST0">novo</span>.<span class="ST0">num</span> == <span class="ST0">aux</span>.<span class="ST0">num</span>) {
+                    <span class="literal">return</span> <span class="literal">false</span>;
+                }
+            }
+        }
+        <span class="literal">return</span> <span class="literal">true</span>;
+    }
+
+    <span class="literal">public</span> <span class="literal">void</span> <span class="ST1">listarOrdem</span>(Elemento x) {
+        <span class="literal">if</span> (x != <span class="literal">null</span>) {
+            listarOrdem(x.<span class="ST0">esq</span>);
+            System.<span class="ST2">out</span>.printf(<span class="string">&quot;</span><span class="string">%1$5d</span><span class="string">&quot;</span>, x.<span class="ST0">num</span>);
+            listarOrdem(x.<span class="ST0">dir</span>);
+        }
+    }
+
+    <span class="literal">public</span> <span class="literal">void</span> <span class="ST1">listarPreOrdem</span>(Elemento x) {
+        <span class="literal">if</span> (x != <span class="literal">null</span>) {
+            System.<span class="ST2">out</span>.printf(<span class="string">&quot;</span><span class="string">%1$5d</span><span class="string">&quot;</span>, x.<span class="ST0">num</span>);
+            listarPreOrdem(x.<span class="ST0">esq</span>);
+            listarPreOrdem(x.<span class="ST0">dir</span>);
+        }
+    }
+
+    <span class="literal">public</span> <span class="literal">void</span> <span class="ST1">listarPosOrdem</span>(Elemento x) {
+        <span class="literal">if</span> (x != <span class="literal">null</span>) {
+            listarPosOrdem(x.<span class="ST0">esq</span>);
+            listarPosOrdem(x.<span class="ST0">dir</span>);
+            System.<span class="ST2">out</span>.printf(<span class="string">&quot;</span><span class="string">%1$5d</span><span class="string">&quot;</span>, x.<span class="ST0">num</span>);
+        }
+    }
+    
+    <span class="literal">public</span> <span class="literal">int</span> <span class="ST1">pesquisar</span>(<span class="literal">int</span> num) {
+        <span class="literal">int</span> altura = <span class="number">0</span>;
+        <span class="ST0">aux</span> = <span class="ST0">raiz</span>;
+        <span class="literal">while</span> (<span class="ST0">aux</span> != <span class="literal">null</span>) {
+            <span class="literal">if</span> (<span class="ST0">aux</span>.<span class="ST0">num</span> == num) {
+                <span class="literal">return</span> altura;
+            } <span class="literal">else</span> <span class="literal">if</span> (num &lt;<span class="ST0">aux</span>.<span class="ST0">num</span>) {
+                <span class="ST0">aux</span> = <span class="ST0">aux</span>.<span class="ST0">esq</span>;
+                altura++;
+            } <span class="literal">else</span> {
+                <span class="ST0">aux</span> = <span class="ST0">aux</span> = <span class="ST0">aux</span>.<span class="ST0">dir</span>;
+                altura++;
+            }
+        }
+        <span class="literal">return</span> -<span class="number">1</span>;
+    }
+    
+    <span class="literal">public</span> Elemento <span class="ST1">excluir</span>(Elemento x, <span class="literal">int</span> num) {
+        Elemento aux1, aux2;
+        
+        <span class="literal">if</span> (num == x.<span class="ST0">num</span>) {
+            <span class="literal">if</span> (x.<span class="ST0">esq</span> == x.<span class="ST0">dir</span>) {
+                <span class="literal">return</span> <span class="literal">null</span>;
+            } <span class="literal">else</span> <span class="literal">if</span> (x.<span class="ST0">esq</span> == <span class="literal">null</span>) {
+                <span class="literal">return</span> x.<span class="ST0">dir</span>;
+            } <span class="literal">else</span> <span class="literal">if</span> (x.<span class="ST0">dir</span> == <span class="literal">null</span>) {
+                <span class="literal">return</span> x.<span class="ST0">esq</span>;
+            } <span class="literal">else</span> {
+                aux1 = x.<span class="ST0">dir</span>;
+                aux2 = x.<span class="ST0">esq</span>;
+                <span class="literal">while</span> (aux1.<span class="ST0">esq</span> != <span class="literal">null</span>) {
+                    aux1 = aux1.<span class="ST0">esq</span>;
+                }
+                aux1.<span class="ST0">esq</span> = x.<span class="ST0">esq</span>;
+                <span class="literal">return</span> aux2;
+            }
+        } <span class="literal">else</span> <span class="literal">if</span> (num &gt; x.<span class="ST0">num</span>) {
+            x.<span class="ST0">dir</span> = excluir(x.<span class="ST0">dir</span>, num);
+        } <span class="literal">else</span> {
+            x.<span class="ST0">esq</span> = excluir(x.<span class="ST0">esq</span>, num);
+        }
+        <span class="literal">return</span> x;
+    }
+    
+}
+</pre></a></body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>Fila.java</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<style type="text/css">
+<!--
+::-webkit-scrollbar {width: 5px; height: 5px;}
+::-webkit-scrollbar-track {box-shadow: inset 0 0 5px grey; border-radius: 5px;}
+::-webkit-scrollbar-thumb {background: #012E55; border-radius: 10px;}
+::-webkit-scrollbar-thumb:hover {background: #BFE9F4;}
+body {color: #a9b7c6; background-color: #030D19; font-family: Monospaced}
+pre {color: #a9b7c6; background-color: #030D19; font-family: Monospaced}
+table {color: #888888; background-color: #030D19; font-family: Monospaced}
+a {text-decoration: none;}
+.whitespace {color: #505050}
+.ST0 {color: #ffc66d; font-family: Monospaced; font-style: italic}
+.ST1 {color: #9876aa; font-family: Monospaced; font-style: italic}
+.string {color: #6a8759}
+.number {color: #6897bb}
+.ST3 {color: #9876aa}
+.ST2 {font-family: Monospaced; font-style: italic}
+.literal {color: #cc7832}
+-->
+</style>
+</head>
+<body>
+<a href="/Codigos/estac/Fila.html" target="_blank">
+<table width="100%"><tr><td align="center">C:\Users\miche\Documents\NetBeansProjects\fila\src\fila\Fila.java</td></tr></table>
+<pre>
+<span class="literal">package</span> fila;
+
+<span class="literal">import</span> java.awt.AWTException;
+<span class="literal">import</span> java.awt.Robot;
+<span class="literal">import</span> java.awt.event.KeyEvent;
+<span class="literal">import</span> java.util.*;
+
+<span class="literal">public</span> <span class="literal">class</span> Fila {
+
+    <span class="literal">public</span> <span class="literal">static</span> <span class="literal">void</span> <span class="ST0">main</span>(String[] args) {
+        Scanner ent = <span class="literal">new</span> Scanner(System.<span class="ST1">in</span>);
+
+        FilaCarro minhafila = <span class="literal">new</span> FilaCarro();
+        <span class="literal">int</span> r;
+
+        <span class="literal">do</span> {
+            System.<span class="ST1">out</span>.println(<span class="string">&quot;</span><span class="string">Menu de Opções</span><span class="string">&quot;</span>);
+            System.<span class="ST1">out</span>.println(<span class="string">&quot;</span><span class="string">1 - Entrada de Veículo no Pátio</span><span class="string">&quot;</span>);
+            System.<span class="ST1">out</span>.println(<span class="string">&quot;</span><span class="string">2 - Saída de Veículo do Pátio</span><span class="string">&quot;</span>);
+            System.<span class="ST1">out</span>.println(<span class="string">&quot;</span><span class="string">3 - Listagem Geral de Veículos</span><span class="string">&quot;</span>);
+            System.<span class="ST1">out</span>.println(<span class="string">&quot;</span><span class="string">4 - Esvaziar Pátio</span><span class="string">&quot;</span>);
+            System.<span class="ST1">out</span>.println(<span class="string">&quot;</span><span class="string">0 - Sair do Programa</span><span class="string">&quot;</span>);
+            System.<span class="ST1">out</span>.print(<span class="string">&quot;</span><span class="string">Escolha uma Opção: </span><span class="string">&quot;</span>);
+            r = Integer.<span class="ST2">parseInt</span>(ent.nextLine());
+            
+            <span class="literal">if</span> (r == <span class="number">1</span>) {
+                <span class="ST2">ConsoleClear</span>();
+                <span class="literal">if</span> (minhafila.<span class="ST3">numcarros</span> == <span class="number">5</span>) {
+                    System.<span class="ST1">out</span>.println(<span class="string">&quot;</span><span class="string">Patio Lotado</span><span class="string">&quot;</span>);
+                } <span class="literal">else</span> {
+                    minhafila.entrada();
+                    System.<span class="ST1">out</span>.println(<span class="string">&quot;</span><span class="string">Registro de Entrada de Veículo</span><span class="string">&quot;</span>);
+                    System.<span class="ST1">out</span>.println(minhafila.<span class="ST3">numcarros</span>+<span class="string">&quot;</span><span class="string"> Veículo(s) no Pátio</span><span class="string">&quot;</span>);
+                }
+                ent.nextLine();
+            }
+            <span class="literal">if</span> (r == <span class="number">2</span>) {
+                <span class="ST2">ConsoleClear</span>();
+                <span class="literal">if</span> (minhafila.<span class="ST3">numcarros</span> == <span class="number">0</span>) {
+                    System.<span class="ST1">out</span>.println(<span class="string">&quot;</span><span class="string">Não existem Veículos no Pátio</span><span class="string">&quot;</span>);
+                } <span class="literal">else</span> {
+                    minhafila.retirar();
+                    System.<span class="ST1">out</span>.println(<span class="string">&quot;</span><span class="string">Registro de Saída de Veículo</span><span class="string">&quot;</span>);
+                    System.<span class="ST1">out</span>.println(minhafila.<span class="ST3">numcarros</span>+<span class="string">&quot;</span><span class="string"> Veículos no Pátio</span><span class="string">&quot;</span>);
+                }
+                ent.nextLine();
+            }
+            <span class="literal">if</span> (r == <span class="number">3</span>) {
+                <span class="ST2">ConsoleClear</span>();
+                minhafila.mostrar();
+                ent.nextLine();
+            }
+            <span class="literal">if</span> (r == <span class="number">4</span>) {
+                <span class="ST2">ConsoleClear</span>();
+                minhafila.esvaziar();
+                System.<span class="ST1">out</span>.println(<span class="string">&quot;</span><span class="string">Pátio Esvaziado</span><span class="string">&quot;</span>);
+                ent.nextLine();
+            }
+            <span class="ST2">ConsoleClear</span>();
+        } <span class="literal">while</span> (r != <span class="number">0</span>);
+    }
+    
+        <span class="literal">static</span> <span class="literal">void</span> <span class="ST0">ConsoleClear</span>() {
+        <span class="literal">try</span> {
+            Robot robot = <span class="literal">new</span> Robot();
+
+            robot.setAutoDelay(<span class="number">5</span>);
+            robot.keyPress(KeyEvent.<span class="ST1">VK_CONTROL</span>);
+            robot.keyPress(KeyEvent.<span class="ST1">VK_L</span>);
+
+            robot.keyRelease(KeyEvent.<span class="ST1">VK_CONTROL</span>);
+            robot.keyRelease(KeyEvent.<span class="ST1">VK_L</span>);
+
+        } <span class="literal">catch</span> (AWTException ex) {
+            System.<span class="ST1">out</span>.println(ex.getMessage());
+        }
+    }
+}
+</pre></a></body>
+</html>

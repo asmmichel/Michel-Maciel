@@ -1,0 +1,92 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>FilaCarro.java</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<style type="text/css">
+<!--
+::-webkit-scrollbar {width: 5px; height: 5px;}
+::-webkit-scrollbar-track {box-shadow: inset 0 0 5px grey; border-radius: 5px;}
+::-webkit-scrollbar-thumb {background: #012E55; border-radius: 10px;}
+::-webkit-scrollbar-thumb:hover {background: #BFE9F4;}
+body {color: #a9b7c6; background-color: #030D19; font-family: Monospaced}
+pre {color: #a9b7c6; background-color: #030D19; font-family: Monospaced}
+table {color: #888888; background-color: #030D19; font-family: Monospaced}
+a {text-decoration: none;}
+.whitespace {color: #505050}
+.ST2 {color: #9876aa; font-family: Monospaced; font-style: italic}
+.string {color: #6a8759}
+.ST0 {color: #9876aa}
+.ST1 {color: #ffc66d}
+.literal {color: #cc7832}
+-->
+</style>
+</head>
+<body>
+<a href="/Codigos/estac/FilaCarro.html" target="_blank">
+<table width="100%"><tr><td align="center">C:\Users\miche\Documents\NetBeansProjects\fila\src\fila\FilaCarro.java</td></tr></table>
+<pre>
+<span class="literal">package</span> fila;
+
+<span class="literal">import</span> java.util.*;
+
+<span class="literal">public</span> <span class="literal">class</span> FilaCarro {
+
+    <span class="literal">public</span> Queue&lt;Carro&gt; <span class="ST0">filacarros</span>;
+    <span class="literal">public</span> <span class="literal">int</span> <span class="ST0">numcarros</span>;
+
+    <span class="literal">public</span> FilaCarro() {
+        <span class="ST0">filacarros</span> = <span class="literal">new</span> LinkedList&lt;&gt;();
+        <span class="ST0">numcarros</span> = <span class="number">0</span>;
+    }
+
+    <span class="literal">public</span> <span class="literal">void</span> <span class="ST1">entrada</span>() {
+        Scanner ent = <span class="literal">new</span> Scanner(System.<span class="ST2">in</span>);
+
+        Carro novocarro = <span class="literal">new</span> Carro();
+        System.<span class="ST2">out</span>.println(<span class="string">&quot;</span><span class="string">Entrada de Veículos no Pátio</span><span class="string">&quot;</span>);
+        System.<span class="ST2">out</span>.print(<span class="string">&quot;</span><span class="string">Placa - </span><span class="string">&quot;</span>);
+        novocarro.<span class="ST0">placa</span> = ent.nextLine();
+        System.<span class="ST2">out</span>.print(<span class="string">&quot;</span><span class="string">Nome - </span><span class="string">&quot;</span>);
+        novocarro.<span class="ST0">nome</span> = ent.nextLine();
+        <span class="ST0">filacarros</span>.add(novocarro);
+        <span class="ST0">numcarros</span>++;
+        System.<span class="ST2">out</span>.println();
+    }
+
+    <span class="literal">public</span> <span class="literal">void</span> <span class="ST1">mostrar</span>() {
+        
+        System.<span class="ST2">out</span>.println(<span class="string">&quot;</span><span class="string">Listagem de Veículos do Pátio</span><span class="literal">\n</span><span class="string">&quot;</span>);
+        System.<span class="ST2">out</span>.println(<span class="string">&quot;</span><span class="literal">\t</span><span class="string">Portão de Saída</span><span class="string">&quot;</span>);
+        <span class="literal">for</span> (Carro x : <span class="ST0">filacarros</span>) {
+            System.<span class="ST2">out</span>.println(<span class="string">&quot;</span><span class="literal">\t</span><span class="string">&quot;</span>+x.<span class="ST0">placa</span>+<span class="string">&quot;</span><span class="string"> - </span><span class="string">&quot;</span>+x.<span class="ST0">nome</span>);
+        }
+        System.<span class="ST2">out</span>.println(<span class="string">&quot;</span><span class="literal">\t</span><span class="string">Portão de Entrada</span><span class="string">&quot;</span>);
+    }
+
+    <span class="literal">public</span> <span class="literal">void</span> <span class="ST1">retirar</span>() {
+        Scanner ent = <span class="literal">new</span> Scanner(System.<span class="ST2">in</span>);
+        
+        String placa;
+        Carro x;
+        System.<span class="ST2">out</span>.println(<span class="string">&quot;</span><span class="string">Retirada de Veículo do Pátio</span><span class="string">&quot;</span>);
+        System.<span class="ST2">out</span>.print(<span class="string">&quot;</span><span class="string">Placa -  </span><span class="string">&quot;</span>);
+        placa = ent.nextLine();
+        x = <span class="ST0">filacarros</span>.peek();
+        <span class="literal">while</span> (!x.<span class="ST0">placa</span>.equals(placa)) {
+            <span class="ST0">filacarros</span>.remove(x);
+            <span class="ST0">filacarros</span>.add(x);
+            x = <span class="ST0">filacarros</span>.peek();
+        }
+        <span class="ST0">filacarros</span>.remove();
+        <span class="ST0">numcarros</span>--;
+        System.<span class="ST2">out</span>.println(<span class="string">&quot;</span><span class="literal">\n</span><span class="string">&quot;</span>+x.<span class="ST0">nome</span>+<span class="string">&quot;</span><span class="string"> saiu do Estacionamento</span><span class="string">&quot;</span>);
+    }
+
+    <span class="literal">public</span> <span class="literal">void</span> <span class="ST1">esvaziar</span>() {
+        <span class="ST0">filacarros</span>.clear();
+        <span class="ST0">numcarros</span> = <span class="number">0</span>;
+    }
+}
+</pre></a></body>
+</html>
