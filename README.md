@@ -3,7 +3,7 @@
 
  ## About
 
- This site came up with the idea of presenting some code in Java, showing the resolution of simple exercises in the study of the programming language.
+ _This site came up with the idea of presenting some code in Java, showing the resolution of simple exercises in the study of the programming language._
 
  * Clean and simple indentation of front-end and back-end code.
  * All complete back-end codes available on the website.
