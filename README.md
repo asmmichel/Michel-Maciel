@@ -1,5 +1,5 @@
 <h1 align="center">Meu Site</h1>
-<p align="center">_Created without using a framework, only with CSS Grid Layout._</p>
+<p align="center"><i>Created without using a framework, only with CSS Grid Layout.</i></p>
 
  ## About
 
