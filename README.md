@@ -1,9 +1,9 @@
 <h1 align="center">Meu Site</h1>
-<p align="center">Created without using a framework, only with CSS Grid Layout.</p>
+<p align="center">_Created without using a framework, only with CSS Grid Layout._</p>
 
  ## About
 
- _This site came up with the idea of presenting some code in Java, showing the resolution of simple exercises in the study of the programming language._
+ This site came up with the idea of presenting some code in Java, showing the resolution of simple exercises in the study of the programming language.
 
  * Clean and simple indentation of front-end and back-end code.
  * All complete back-end codes available on the website.
