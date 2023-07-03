@@ -1,23 +1,23 @@
-<h1 align="center">Java Data Structure</h1>
-<p align="center"><i>Created without using a framework, only with CSS Grid Layout.</i></p>
+<h1 align="center">Estrutura de Dados em Java</h1>
+<p align="center"><i>Criado sem o uso de um framework, apenas com CSS Grid Layout.</i></p>
 
- ## About
+ ## Sobre
 
- This site came up with the idea of presenting some code in Java, showing the resolution of simple exercises in the study of the programming language.
+ Este site surgiu com a ideia de apresentar alguns códigos em Java, mostrando a resolução de exercícios simples no estudo da linguagem de programação.
 
- * Clean and simple indentation of front-end and back-end code.
- * All complete back-end codes available on the website.
- * Explanation of the usefulness of each code.
- * Gifs showing how the code works on the console.
- * Fully responsible website.
+ * Indentação limpa e simples do código de front-end e back-end.
+ * Todos os códigos completos de back-end disponíveis no site.
+ * Explicação da utilidade de cada código.
+ * Gifs mostrando como o código funciona no console.
+ * Site totalmente responsivo.
 
  <p align="center"><img src="Midia/gif.gif" width="600"></p>
 
- ## Getting Started
+ ## Começando
 
- 1. Clone this repo using git clone `https://github.com/asmmichel/meu-site`
- 2. Move yourself to the appropriate directory `cd meu-site`
- 3. Run `index.html`
+ 1. Clone este repositório usando git clone `https://github.com/asmmichel/meu-site`
+ 2. Mova-se para o diretório apropriado `cd meu-site`
+ 3. Execute `index.html`
  
  ## License
 
